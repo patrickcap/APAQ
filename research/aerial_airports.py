@@ -5,7 +5,7 @@ Downloads images of all airports from the Google Static Maps API
 import requests
 from parsing_latlong import parsing_latlong
 
-GOOGLEMAPS_API_KEY = "AIzaSyAlvKiF5d2XPTwT1PKpNHd2RUdNXLZxwuI" #API Key here
+GOOGLEMAPS_API_KEY = "" #API Key here
 
 # -------- Image Setup --------
 zoom = "15"
