@@ -30,6 +30,8 @@ def parsing_latlong(filename) -> pd.DataFrame:
     #add negatives and positives to longitude data based on direction
     longlat_data.loc[longlat_data['direction_lat'] == "S", 'lat_dec'] = -1*longlat_data["lat_dec"] 
     longlat_data.loc[longlat_data['direction_long'] == "W", 'long_dec'] = -1*longlat_data["long_dec"] 
-    longlat_data = longlat_data.drop(["direction_lat","direction_long"], axis=1)
+    longlat_data = longlat_data.drop(["direction_lat","direction_long"], axis=1).reset_index(drop=True)
     
+    longlat_data = longlat_data.replace(" ", "_", regex=True)
+
     return longlat_data
