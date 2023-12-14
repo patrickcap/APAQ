@@ -32,7 +32,7 @@ latlong_df['storage_name'] = latlong_df['airport'].apply(lambda x: store_folder 
 
 
 # requests implementation
-def retreive_images(row) -> None:
+def retrieve_images(row) -> None:
     """
     Implements the retrieval of images from given URL to given folder  
     """
@@ -42,11 +42,5 @@ def retreive_images(row) -> None:
             f.write(picture_request.content)
 
 # apply requests through dataframe of airports 
-latlong_df.apply(lambda row: retreive_images(row),axis =1)
+latlong_df.apply(lambda row: retrieve_images(row),axis =1)
 
-
-"""
-#urllib.request Implemenation: 
-import urllib.request
-latlong_df.apply(lambda row: urllib.request.urlretrieve(row['url'], row['storage_name']),axis =1)
-"""
