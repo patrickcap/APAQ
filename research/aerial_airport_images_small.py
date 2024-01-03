@@ -3,7 +3,7 @@ Downloads images of all airports from the Google Static Maps API
 """
 
 import requests
-from parsing_latlong import parsing_latlong
+from research.parsing_latlong_small import parsing_latlong
 
 
 # -------- Image Setup --------
