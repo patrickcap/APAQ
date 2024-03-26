@@ -18,6 +18,12 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: '3.10'
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: 'true'
+      - name: pull lfs files
+        run: git lfs pull
       - name: Install dependencies
         run: |
           pip install --upgrade pip
@@ -32,6 +38,9 @@ jobs:
         run: |
           pip install isort
           isort --line-length 120 --check ./src ./tests
+      - name: Train model
+        run: |
+          python -m src.model.main --airports_augmented_dataset ./data/airports_augmented_dataset.json
       - name: Run API tests
         run: |
           python -W ignore -m unittest discover -s "$(pwd)/tests" -p 'test*'
